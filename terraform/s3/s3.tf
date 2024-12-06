@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "weather_data" {
-  bucket = "weather-api-data"
+  bucket = "weather-api-data-samuditha"
 }
 
 output "bucket_name" {

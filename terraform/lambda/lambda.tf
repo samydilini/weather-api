@@ -8,7 +8,7 @@ resource "aws_lambda_function" "get_current_weather" {
   runtime       = "nodejs20.x"
   handler       = "getCurrentWeather.handler"
   role          = var.lambda_execution_role_arn
-  filename      = "getCurrentWeather.zip"
+  filename      = "${path.module}/../../lambda/getCurrentWeather.zip"
 }
 
 resource "aws_lambda_function" "get_historical_weather" {
@@ -16,7 +16,7 @@ resource "aws_lambda_function" "get_historical_weather" {
   runtime       = "nodejs20.x"
   handler       = "getHistoricalWeather.handler"
   role          = var.lambda_execution_role_arn
-  filename      = "getHistoricalWeather.zip"
+  filename      = "${path.module}/../../lambda/getHistoricalWeather.zip"
 
   
 }
