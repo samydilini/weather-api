@@ -12,6 +12,7 @@ module "s3" {
 module "lambda" {
   source = "./lambda"
   lambda_execution_role_arn = module.iam.lambda_execution_role_arn
+  weather_api_execution_arn = module.apigateway.weather_api_execution_arn
 }
 
 # API Gateway setup to expose Lambda functions as endpoints

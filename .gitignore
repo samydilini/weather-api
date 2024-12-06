@@ -4,3 +4,5 @@ lambda/node_modules/
 lambda/package-lock.json
 terraform/.terraform
 terraform/.terraform.lock.hcl
+lambda/dist
+terraform.tfstate*

@@ -42,3 +42,13 @@ output "api_gateway_url" {
   description = "The URL of the API Gateway"
   value       = aws_apigatewayv2_api.weather_api.api_endpoint
 }
+
+output "weather_api_execution_arn" {
+  value = aws_apigatewayv2_api.weather_api.execution_arn
+}
+
+resource "aws_apigatewayv2_stage" "prod_stage" {
+  api_id      = aws_apigatewayv2_api.weather_api.id
+  name        = "prod"
+  auto_deploy = true
+}
