@@ -32,7 +32,8 @@ you the following to test the lambda in console
     "city": "London"
   }
 }
-` 5. test API gateway indipendantly
+`
+5. test API gateway indipendantly
 
 `api_gateway_url+/prod/weather/melb`
 eg :
