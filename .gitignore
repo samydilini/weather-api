@@ -6,3 +6,7 @@ terraform/.terraform
 terraform/.terraform.lock.hcl
 lambda/dist
 terraform.tfstate*
+.DS_Store
+lambda/combined.log
+lambda/error.log
+
