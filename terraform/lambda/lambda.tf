@@ -8,12 +8,24 @@ variable "weather_api_execution_arn" {
   type        = string
 }
 
+variable "s3_bucket_name" {
+  description = "The name of the S3 bucket"
+  type        = string
+}
+
 resource "aws_lambda_function" "get_current_weather" {
   function_name = "getCurrentWeather"
   runtime       = "nodejs20.x"
   handler       = "getCurrentWeather.handler"
   role          = var.lambda_execution_role_arn
   filename      = "${path.module}/../../lambda/dist/getCurrentWeather.zip"
+
+  environment {
+      variables = {
+        API_KEY = "/API_KEY"
+        BUCKET_NAME = var.s3_bucket_name
+      }
+    }
 }
 
 resource "aws_lambda_function" "get_historical_weather" {

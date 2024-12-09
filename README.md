@@ -1,12 +1,17 @@
 # weather-api
 
+add your apikey as API_KEY in parameter store
 Returns current and historical weather of a city
 npm run build
 
 //automate this if i have time
 cd lambda/dist
-zip -r dist/getCurrentWeather.zip dist/getCurrentWeather.js node_modules
-zip -r dist/getHistoricalWeather.zip dist/getHistoricalWeather.js node_modules
+
+zip -r getCurrentWeather.zip getCurrentWeather.js ./shared node_modules
+
+zip -r getHistoricalWeather.zip getHistoricalWeather.js ./shared node_modules
+
+fix lambda.tf
 
 terraform init
 
