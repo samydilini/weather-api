@@ -33,6 +33,8 @@ you the following to test the lambda in console
   }
 }
 `
+
+
 5. test API gateway indipendantly
 
 `api_gateway_url+/prod/weather/melb`
