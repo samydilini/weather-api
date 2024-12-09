@@ -6,4 +6,5 @@ interface WeatherApiResponse {
   weather: {
     description: string;
   }[];
+  coord: { lon: number; lat: number };
 }

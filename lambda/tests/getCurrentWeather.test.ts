@@ -6,11 +6,6 @@ import ApiKey from "../src/shared/apiKey";
 
 // Mock the external dependencies
 jest.mock("axios");
-jest.mock("aws-sdk", () => ({
-  SSM: jest.fn().mockImplementation(() => ({
-    getParameter: jest.fn(),
-  })),
-}));
 jest.mock("../src/shared/logger", () => ({
   info: jest.fn(),
 }));

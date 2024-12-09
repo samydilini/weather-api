@@ -73,10 +73,12 @@ describe("s3Logger", () => {
   //   const message = "Request message";
 
   //   // Force the mock to simulate an error
-  //   s3Instance.putObject.mockReturnValueOnce({
-  //     promise: jest.fn().mockRejectedValue(new Error("S3 Error")),
+  //   // jest.mocked(s3Instance.putObject).mockReturnValueOnce({
+  //   //   promise: jest.fn().mockRejectedValue(new Error("S3 Error")),
+  //   // });
+  //   jest.mocked(s3Instance.putObject).mockImplementation(() => {
+  //     throw new Error("S3 Error");
   //   });
-
   //   // Call the printRequest method
   //   await s3Logger.printRequest(message);
 

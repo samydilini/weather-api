@@ -1,6 +1,4 @@
 import axios from "axios";
-import * as AWS from "aws-sdk";
-const ssm = new AWS.SSM();
 import Logger from "./shared/logger";
 import S3Logger from "./shared/s3Logger";
 import ApiKey from "./shared/apiKey";
@@ -14,7 +12,7 @@ export const handler = async (event: any): Promise<any> => {
   S3Logger.printRequest(message);
 
   try {
-    const apiKey: string = await ApiKey.getApiKey(); //unit test 500
+    const apiKey: string = await ApiKey.getApiKey();
     const url: string = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 
     const response = await axios.get<WeatherApiResponse>(url);
@@ -26,11 +24,21 @@ export const handler = async (event: any): Promise<any> => {
 
     return {
       statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
       body: JSON.stringify(response.data),
     };
   } catch (error: any) {
     return {
       statusCode: 500,
+      headers: {
+        "Access-Control-Allow-Origin": "*", // Allow all origins
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS", // Specify allowed methods
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
       body: JSON.stringify({ error: error.message }),
     };
   }

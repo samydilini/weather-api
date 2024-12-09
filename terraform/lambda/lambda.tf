@@ -18,14 +18,14 @@ resource "aws_lambda_function" "get_current_weather" {
   runtime       = "nodejs20.x"
   handler       = "getCurrentWeather.handler"
   role          = var.lambda_execution_role_arn
-  filename      = "${path.module}/../../lambda/dist/getCurrentWeather.zip"
+  filename      = "${path.module}/../../lambda/dist/src/getCurrentWeather.zip"
 
   environment {
-      variables = {
-        API_KEY = "/API_KEY"
-        BUCKET_NAME = var.s3_bucket_name
-      }
+    variables = {
+      API_KEY = "/API_KEY"
+      BUCKET_NAME = var.s3_bucket_name
     }
+  }
 }
 
 resource "aws_lambda_function" "get_historical_weather" {
@@ -33,7 +33,14 @@ resource "aws_lambda_function" "get_historical_weather" {
   runtime       = "nodejs20.x"
   handler       = "getHistoricalWeather.handler"
   role          = var.lambda_execution_role_arn
-  filename      = "${path.module}/../../lambda/dist/getHistoricalWeather.zip"
+  filename      = "${path.module}/../../lambda/dist/src/getHistoricalWeather.zip"
+
+  environment {
+    variables = {
+      API_KEY = "/API_KEY"
+      BUCKET_NAME = var.s3_bucket_name
+    }
+  }
 }
 
 resource "aws_lambda_permission" "allow_apigateway_invoke" {
